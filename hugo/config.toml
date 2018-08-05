@@ -9,7 +9,7 @@ metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
 
 [params]
-  editURL = "https://github.com/machellerogden/targets"
+  editURL = "https://github.com/targets-framework/targets"
   description = "targets"
   author = "Mac Heller-Ogden"
   showVisitedLinks = true
@@ -27,7 +27,7 @@ languageName = "English"
 [[Languages.en.menu.shortcuts]] 
 name = "<i class='fa fa-fw fa-github'></i> Github repo"
 identifier = "ds"
-url = "https://github.com/machellerogden/targets"
+url = "https://github.com/targets-framework/targets"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]

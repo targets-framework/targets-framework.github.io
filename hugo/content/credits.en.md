@@ -7,7 +7,7 @@ disableToc: true
 
 Right now, it's mostly been a one-man show, but all PR will be considered. Contributions are welcome!
 
-{{% ghcontributors "https://api.github.com/repos/machellerogden/targets/contributors?per_page=100" %}}
+{{% ghcontributors "https://api.github.com/repos/targets-framework/targets/contributors?per_page=100" %}}
 
 ## Prior Art
 
