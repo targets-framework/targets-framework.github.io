@@ -116,7 +116,7 @@
 	"title": "Credits",
 	"tags": [],
 	"description": "",
-	"content": " Contributors Right now, it\u0026rsquo;s mostly been a one-man show, but all PR will be considered. Contributions are welcome!\n.ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; }   @machellerogden 149 commits   Prior Art Without the work of many many devs before me, specifically the authors of packages such as rc, minimist and inquirer, this project might have never gotten off the ground. Thank you.\n"
+	"content": " Contributors Right now, it\u0026rsquo;s mostly been a one-man show, but PRs are welcome!\n.ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; }   @machellerogden 153 commits   Prior Art Without the work of many many devs before me, specifically the authors of packages such as rc, minimist and inquirer, this project might have never gotten off the ground. Thank you.\n"
 },
 {
 	"uri": "localhost:1313/test/tags/",

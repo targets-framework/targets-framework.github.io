@@ -5,7 +5,7 @@ disableToc: true
 
 ## Contributors
 
-Right now, it's mostly been a one-man show, but all PR will be considered. Contributions are welcome!
+Right now, it's mostly been a one-man show, but PRs are welcome!
 
 {{% ghcontributors "https://api.github.com/repos/targets-framework/targets/contributors?per_page=100" %}}
 
