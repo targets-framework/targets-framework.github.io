@@ -51,8 +51,8 @@ spec:
   - deploy.confirm
   - '@proceed-when/deploy.confirm.ready'
   - docker.push
-  - '@bound-to/profile-a::k8s.apply,@bound-to/profile-b::k8s.apply'
-  - '@bound-to/profile-a::k8s.verify,@bound-to/profile-b::k8s.verify'
+  - '@rebind-to/profile-a::k8s.apply,@rebind-to/profile-b::k8s.apply'
+  - '@rebind-to/profile-a::k8s.verify,@rebind-to/profile-b::k8s.verify'
 ```
 
 {{% notice info %}}
