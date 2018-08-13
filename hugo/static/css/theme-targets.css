@@ -113,3 +113,7 @@ a:hover {
     font-size: 1rem;
 }
 
+div.notices.warning p {
+    border-top-color: #93376F;
+    background-color: #f7e2ee;
+}

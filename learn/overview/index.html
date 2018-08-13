@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.46" />
-    <meta name="description" content="more to explore and learn">
+    <meta name="description" content="what is a &#34;target&#34; anyhow?">
 <meta name="author" content="Mac Heller-Ogden">
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>more :: targets</title>
+    <title>overview :: targets</title>
     
     
     <link href="/css/nucleus.css?1534217810" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn/more/">
+  <body class="" data-url="/learn/overview/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -126,8 +126,8 @@
   
     
     <li data-nav-id="/learn/overview/" title="overview" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/learn/overview/">
@@ -386,8 +386,8 @@
   
     
     <li data-nav-id="/learn/more/" title="more" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/learn/more/">
@@ -565,7 +565,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/targets-framework/targetslearn/more/_index.en.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/targets-framework/targetslearn/overview/_index.en.md" target="blank">
                       <i class="fa fa-code-fork"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -594,7 +594,7 @@
             
           
           
-            <a href='/'>targets</a> > <a href='/learn/'>learn targets</a> > more
+            <a href='/'>targets</a> > <a href='/learn/'>learn targets</a> > overview
           
          
           
@@ -610,7 +610,20 @@
 <ul>
 <li>
 <ul>
-<li><a href="#more-examples">More Examples</a></li>
+<li>
+<ul>
+<li><a href="#what-is-targets">What is Targets?</a></li>
+<li><a href="#who-would-want-to-use-targets">Who would want to use Targets?</a></li>
+<li><a href="#what-is-a-target">What is a &ldquo;target&rdquo;?</a></li>
+<li><a href="#what-is-a-composition">What is a &ldquo;composition&rdquo;?</a></li>
+<li><a href="#what-is-an-operation">What is an &ldquo;operation&rdquo;?</a></li>
+<li><a href="#what-is-a-spec">What is a &ldquo;spec&rdquo;?</a></li>
+<li><a href="#what-does-a-targets-implementation-look-like">What does a Targets implementation look like?</a>
+<ul>
+<li><a href="#background">Background</a></li>
+</ul></li>
+<li><a href="#the-targets-origin-story-a-note-from-the-author">The Targets Origin Story / A Note From the Author</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -625,7 +638,7 @@
         
         <div id="body-inner">
           
-            <h1>more</h1>
+            <h1>overview</h1>
           
 
         
@@ -633,11 +646,109 @@
 
 
 
-<h2 id="more-examples">More Examples</h2>
+<h3 id="what-is-targets">What is Targets?</h3>
 
-<p>Review the <a href="https://github.com/machellerogden/targets/tree/master/examples">./examples</a> directory for more examples.</p>
+<p>Targets takes the concept of function composition and surfaces it to the command-line. It enables you, the author of the next great CLI tool, to take many small single-purpose functions and to safely compose them into complex but reliable workflows using a succint declarative syntax.</p>
 
-<p><em><strong>Next Up:</strong> <a href="/learn/tty_mode/">Experimental TTY-mode</a></em></p>
+<p>Use Targets to build common tooling for your team/users and reduce complex workflows into reliable tasks and which are simple to operate on.</p>
+
+<h3 id="who-would-want-to-use-targets">Who would want to use Targets?</h3>
+
+<p>Developers, and in particular DevOps folk, and their ilk, will find it particularly useful. If you have some gnarly shell scripts sitting your <code>$HOME/bin</code> which you call on which any regularity, you should probably keep reading.</p>
+
+<p>Consider some practical DevOps use cases:</p>
+
+<ul>
+<li>scheduling builds and deployments</li>
+<li>orchestrating containers</li>
+<li>complex database migrations</li>
+<li>managing messages and dead-letter queues in event-based systems</li>
+<li>auditing source control systems at scale</li>
+<li>auditing dependencies in a micro-services architecture</li>
+<li>managing configuration and secrets</li>
+</ul>
+
+<p>All of the above referenced use cases are examples of complex workflows to which Targets is ideally suited.</p>
+
+<p>So, get ready to throw out all those overgrown POSIX scripts, ditch that late night python hackery, uninstall a few dozen Jenkins plugins and give Targets a spin!</p>
+
+<div class="notices tip" ><p>Targets isn&rsquo;t just about Node.js scripting—it can easily handle readable streams and pty instances. This means that any existing command-line tools you have can easily be incorporated into the workflows you design. There are extensions to make this easy! Keep reading to learn more.</p>
+</div>
+
+
+<h3 id="what-is-a-target">What is a &ldquo;target&rdquo;?</h3>
+
+<p><strong>The short answer:</strong> it&rsquo;s a task.</p>
+
+<p><strong>The technical answer:</strong> At it&rsquo;s core, a target is just a JavaScript function which may return either null, a value, a <a href="https://promisesaplus.com/">Promise</a>, a <a href="https://nodejs.org/api/stream.html#stream_readable_streams">ReadableStream</a> or a <a href="https://www.npmjs.com/package/node-pty">pty</a> instance. But Targets also supports a declarative syntax written as either JSON or YML which allows you to create workflows out of shell commands and/or network requests without writing a single line of code.</p>
+
+<h3 id="what-is-a-composition">What is a &ldquo;composition&rdquo;?</h3>
+
+<p>A core capability of Targets is to allow targets to be composed. When you declare a group of targets and give it a name, we call this a composition. You&rsquo;ll learn more about this as you work through the tutorials.</p>
+
+<h3 id="what-is-an-operation">What is an &ldquo;operation&rdquo;?</h3>
+
+<p>Operations are meta-targets which handle side-effects. They provide an explicit/declarative mechanism for altering config, dictating control flow, toggling states/modes and otherwise affecting the behavior of your workflows.</p>
+
+<h3 id="what-is-a-spec">What is a &ldquo;spec&rdquo;?</h3>
+
+<p>Targets can be written as code, or, for certain types of targets—such as shell commands or HTTP requests—targets can be declared. When declaring a target, we call this a &ldquo;spec&rdquo;. Targets supports a few useful spec formats out-of-the-box, and supports custom loaders which enable you to implement your own spec interpreters.</p>
+
+<h3 id="what-does-a-targets-implementation-look-like">What does a Targets implementation look like?</h3>
+
+<p>Some folks do best with an example. So, without any of the necessary context, let&rsquo;s swim straight to the deep end of the pool and consider the anatomy of a decently complex target composition.</p>
+
+<pre><code>kind: composition
+config:
+  git:
+    depth: 1
+    single-branch: true
+spec:
+  - '@rebind/name::docker.name'
+  - deploy.select
+  - '@bind/deploy.select.refspec::git.branch'
+  - mktemp
+  - '@bind/mktemp::git.directory'
+  - '@bind/mktemp::docker.context'
+  - git.clone
+  - docker.build
+  - docker.tag
+  - deploy.confirm
+  - '@proceed-when/deploy.confirm.ready'
+  - docker.push
+  - '@rebind-to/profile-a::k8s.apply,@rebind-to/profile-b::k8s.apply'
+  - '@rebind-to/profile-a::k8s.verify,@rebind-to/profile-b::k8s.verify'
+</code></pre>
+
+<p>Here&rsquo;s a breakdown:</p>
+
+<ul>
+<li><code>kind</code> - This is used by the Targets loader to determine how the rest of the spec should be interpreted.</li>
+<li><code>config</code> - This declares an instance of &ldquo;bound config&rdquo;. Each target has certain config requirements, but when you are defining a composition, you sometimes want certain pieces of that configuration to be hard-coded with specific values. Declaring <code>config</code> on the composition will essentially hard-code these values within the context of the composition.</li>
+<li><code>spec</code> - The contents of the <code>spec</code> property will vary for by <code>kind</code>, but in this example, each item in <code>spec</code> is either a target, another composition or an operation. Operations start with <code>@</code>. The operations name sits between the <code>@</code> and a <code>/</code> and values after the slash are arguments to the operation.</li>
+</ul>
+
+<p>As you might surmise, the above example is only one piece of the puzzle. The full implementation would require each of the targets in the <code>spec</code> collection to have an underlying implementation. In this specific example, the targets we&rsquo;re alluding to could easily be defined by simply spec&rsquo;ing out the necessary shell commands. <strong>You wouldn&rsquo;t even need to write any code.</strong></p>
+
+<p>That&rsquo;s enough to get you thinking—We&rsquo;ll leave this here for now as a mysterious example for the reader to consider.</p>
+
+<div class="notices info" ><p>As you start working through the tutorials in this chapter, most of the examples you&rsquo;ll see use JSON for task compositions. Spoiler alert! As you can see in the example above, Targets supports a special YML syntax. You&rsquo;ll learn about this towards the end of the tutorials.</p>
+</div>
+
+
+<hr />
+
+<h4 id="background">Background</h4>
+
+<h3 id="the-targets-origin-story-a-note-from-the-author">The Targets Origin Story / A Note From the Author</h3>
+
+<p>Make was the original build tool. It was originally designed to make configuring, compiling, testing, debugging and running C code easier. Its history is deep coupled with the C programming language. Over time, Make has become useful for all sort of scripting beyond just working with C. In fact, Make was the backbone for a simple docker scheduling tool I wrote a few years ago called <a href="https://github.com/carsdotcom/powertrain">powertrain</a>. Targets on the other hand has nothing to do with C, or any other language. Targets started as an attempt to take the best ideas from Make around how to compose tasks and how to source config, to improve upon and modernize these basic ideas. It&rsquo;s ended up being so much more.</p>
+
+<p>Targets exists because it&rsquo;s a tool that I&rsquo;ve always wanted. It&rsquo;s my passion project. But, I&rsquo;m hoping it can provide value to others as well. Targets was built for me—but anyone with a passion for DevOps and command-line scripting should be able to find new and creative ways to leverage it.</p>
+
+<p>In Make, a target is a reference to the &ldquo;target&rdquo; program which you are intending to &ldquo;make&rdquo;, but Make also supports the concept of &ldquo;phony targets&rdquo; which you can define with arbitrary behavior and which can be composed as tasks. It was Make&rsquo;s phony target capabilities which originally inspired this framework, and it&rsquo;s name.</p>
+
+<p><em><strong>Next Up:</strong> <a href="/learn/prerequisites/">prerequisites</a></em></p>
 
 
 <footer class=" footline" >
@@ -691,8 +802,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -710,21 +819,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -854,7 +950,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -871,9 +966,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -884,24 +976,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -922,6 +996,40 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
             
         
         
@@ -929,10 +1037,10 @@
 
 
         
-            <a class="nav nav-prev" href="/learn/project_structure/" title="project structure"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/learn/" title="learn targets"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/learn/tty_mode/" title="tty-mode" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/learn/prerequisites/" title="prerequisites" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
