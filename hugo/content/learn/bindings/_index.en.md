@@ -59,7 +59,7 @@ If you're coding along with the tutorial, you'll need to add [axios](https://www
 Let's run some example commands and use a binding on the targets we've implemented above...
 
 ```
-mycli system.name system.name::greet.name greet
+mycli system.name @result.system.name::config.greet.name greet
 [System Name] machellerogden
 [Greet] Hello, machellerogden!
 ```
