@@ -67,7 +67,7 @@ mycli system.name system.name::greet.name greet
 ...and another example...
 
 ```
-mycli github.user github.user.name::greet.name greet
+mycli github.user @result.github.user.name::config.greet.name greet
 [Greet] Hello, Mac Heller-Ogden!
 ```
 
@@ -77,10 +77,10 @@ Here you'll see that the result from one target was "bound" to the config of ano
 The right-side of the binding can use the special array notations you learned about in the [previous section]({{< relref "learn/config_part_2/_index.en.md" >}}): `[+]`, `[-]`, `[<int>,<int>]`.
 {{% /notice %}}
 
-Aside from binding results, targets also allows you to "rebind" config from one namespace to another by prefacing your binding with an `@` character. For example...
+Aside from binding results, targets also allows you to bind config from one namespace to another. For example...
 
 ```
-mycli --foo.location Miami @foo.location::weather.location weather.sky
+mycli --foo.location Miami @config.foo.location::config.weather.location weather.sky
 ```
 
 In this example the foo location config value will be copied over to weather.location.
@@ -101,7 +101,7 @@ For this scenario, you could write a composition target like so:
 
 ```
 // deploy.js
-module.exports = [ '@name::docker.name', '@name::k8s.name', 'docker.build', 'docker.push', 'k8s.deploy' ];
+module.exports = [ '@config.name::config.docker.name', '@config.name::config.k8s.name', 'docker.build', 'docker.push', 'k8s.deploy' ];
 ```
 
 When you run your composition target (i.e. `mycli deploy`), both the `docker.build` and the `k8s.deploy` targets will receive the top-level `name` config property.
@@ -115,20 +115,18 @@ Let's see review these examples again, but this time we'll use the long-form syn
 The long-form bind syntax would look like this:  
 
 ```
-mycli system.name @bind/system.name::greet.name greet
+mycli system.name @bind/result.system.name::config.greet.name greet
 [System Name] machellerogden
 [Greet] Hello, machellerogden!
 ```
 
 ```
-mycli github.user @bind/github.user.name::greet.name greet
+mycli github.user @bind/result.github.user.name::config.greet.name greet
 [Greet] Hello, Mac Heller-Ogden!
 ```
 
-...the here is the rebind example, using the long-form syntax:
-
 ```
-mycli --foo.location Miami @rebind/foo.location::weather.location weather.sky
+mycli --foo.location Miami @bind/config.foo.location::config.weather.location weather.sky
 ```
 
 Now that you understand bindings, it's time to learn how to sequence and parallelize target execution, and you'll learn more about target composition.
