@@ -12,7 +12,7 @@ Use Targets to build common tooling for your team/users and reduce complex workf
 
 ### Who would want to use Targets?
 
-Developers, and in particular DevOps folk, and their ilk, will find it particularly useful. If you have some gnarly shell scripts sitting your `$HOME/bin` which you call on which any regularity, you should probably keep reading.
+Developers, and in particular DevOps folk, and their ilk, will find it particularly useful. If you have some gnarly shell scripts sitting your `$HOME/bin` which you call on with any regularity, you should probably keep reading.
 
 Consider some practical DevOps use cases:
 

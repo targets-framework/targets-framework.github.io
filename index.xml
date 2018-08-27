@@ -17,7 +17,7 @@
       
       <guid>localhost:1313/test/credits/</guid>
       <description>Contributors Right now, it&amp;rsquo;s mostly been a one-man show, but PRs are welcome!
-.ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; }   @machellerogden 176 commits   Prior Art Without the work of many many devs before me, specifically the authors of packages such as rc, minimist and inquirer, this project might have never gotten off the ground.</description>
+.ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; }   @machellerogden 179 commits   Prior Art Without the work of many many devs before me, specifically the authors of packages such as rc, minimist and inquirer, this project might have never gotten off the ground.</description>
     </item>
     
   </channel>
