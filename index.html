@@ -9,25 +9,64 @@
     <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
     <title>Targets</title>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Orbitron');
         html,
         body {
             height: 100%;
             width: 100%;
         }
         body {
+            padding: 0;
+            margin: 0;
             background-image: url('/images/bg.png');
             background-position: 57.5% 55%;
             background-size: 2000px;
+            text-align: center;
         }
-        a.docs {
-            display: block;
+        div.links {
+            font-family: 'Orbitron', san-serif;
             height: 100%;
-            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: nowrap;
+        }
+        div.links a {
+            color: #B03887;
+            text-decoration: none;
+            display: block;
+            background-color: rgba(255, 255, 255, .4);
+            height: 50px;
+            line-height: 50px;
+            vertical-align: middle;
+            width: 50%;
+            margin: 5px;
+            margin-bottom: 50%;
+        }
+        @media only screen and (max-width: 820px) {
+            div.links {
+                flex-direction: column;
+            }
+            div.links a {
+                margin: 0;
+                width: 100%;
+            }
+            div.links a:first-child {
+                margin-top: auto;
+                margin-bottom: 5px;
+            }
+            div.links a:last-child {
+                margin-bottom: 50%;
+            }
         }
     </style>
   </head>
   <body>
-      <a class="docs" href="https://targets.gitbook.io/docs/" title="Targets Documentation"></a>
+      <div class="links">
+        <a class="docs" href="https://targets.gitbook.io/docs/" title="Targets Documentation">Documentation</a>
+        <a class="source" href="https://github.com/targets-framework/targets" title="Targets Source Code">Source</a>
+      </div>
   </body>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
